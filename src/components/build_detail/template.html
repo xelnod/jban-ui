@@ -1,0 +1,17 @@
+<div class="hello">
+  <h2>Привет, {{currentUser.username}}</h2>
+  <button @click="buildClass = 'swordman'">Swordman</button>
+  <button @click="buildClass = 'mage'">Mage</button>
+  <button @click="buildClass = 'hunter'">Hunter</button>
+  <button @click="buildClass = 'thief'">Thief</button>
+  <ul>
+    <li v-for="charSkill in buildCharSkills" :key="charSkill.id">
+      {{ charSkills[charSkill][buildClass].name }}
+    </li>
+  </ul>
+  <ul>
+    <li v-for="rune in buildRunes" :key="rune.id">
+      {{ runes[rune].name }}
+    </li>
+  </ul>
+</div>

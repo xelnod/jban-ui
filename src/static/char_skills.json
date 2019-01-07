@@ -1,0 +1,38 @@
+{
+  "1": {
+    "swordman": {
+      "name": "Fatal Blow I",
+      "icon_url": "s01.jpg"
+    },
+    "mage": {
+      "name": "Magical Shock I",
+      "icon_url": "m01.jpg"
+    },
+    "hunter": {
+      "name": "Power Arrow I",
+      "icon_url": "h01.jpg"
+    },
+    "thief": {
+      "name": "Coma I",
+      "icon_url": "t01.jpg"
+    }
+  },
+  "2": {
+    "swordman": {
+      "name": "Berserk I",
+      "icon_url": "s02.jpg"
+    },
+    "mage": {
+      "name": "Berserk I",
+      "icon_url": "m02.jpg"
+    },
+    "hunter": {
+      "name": "Berserk I",
+      "icon_url": "h02.jpg"
+    },
+    "thief": {
+      "name": "Fury Concentration I",
+      "icon_url": "t02.jpg"
+    }
+  }
+}

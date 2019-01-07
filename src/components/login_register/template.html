@@ -1,0 +1,8 @@
+<div class="hello">
+    <h2>Дратути.</h2>
+    <form>
+      <input type="text" v-model="username"/>
+      <input type="password" v-model="password"/>
+      <input type="submit" @click="(e) => {e.preventDefault(); login(username, password)}">
+    </form>
+</div>
