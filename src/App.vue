@@ -2,14 +2,26 @@
 <template>
   <div id="app">
     <!--<img src="./assets/logo.png">-->
-    <img class='main-logo' src="https://images.ru.prom.st/323455245_w0_h0_3.jpg">
+    <main-header/>
     <router-view/>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import mainHeader from '@/components/header';
+
 export default {
   name: 'App',
+  computed: {
+    ...mapState({
+      currentUser: state => state.currentUser,
+    }),
+  },
+  components: { mainHeader },
+  mounted() {
+    this.$store.dispatch('refreshState');
+  },
 };
 </script>
 
