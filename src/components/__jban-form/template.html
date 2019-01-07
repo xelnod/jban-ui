@@ -1,0 +1,12 @@
+<form>
+  <div v-for="field in fields">
+    <div class="form-error" v-if="field.error">{{ field.error }}</div>
+    <label :for="field.name">{{ field.label }}</label>
+    <!--suppress HtmlFormInputWithoutLabel -->
+    <input :id="field.name" :type="field.type" v-model="field.value" v-if="field.type!=='select'"/>
+    <select :id="field.name" :type="field.type" v-model="field.value" v-if="field.type==='select'">
+      <option v-for="(option) in field.options" :value="option.value">{{ option.label }}</option>
+    </select>
+  </div>
+  <input type="submit" @click.prevent="onSubmit">
+</form>

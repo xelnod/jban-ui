@@ -2,9 +2,9 @@
 
 import Vue from 'vue';
 import Router from 'vue-router';
-import Main from '@/components/index';
-import BuildDetail from '@/components/build_detail';
-import LoginRegister from '@/components/login_register';
+import Main from '@/pages/index';
+import BuildDetail from '@/pages/build-detail';
+import LoginRegister from '@/pages/login-register';
 
 Vue.use(Router);
 

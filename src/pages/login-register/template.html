@@ -1,0 +1,17 @@
+<div class="hello">
+    <h2>Дратути.</h2>
+    <div class="tab" v-if="!isLoggedIn">
+      <button class="tablinks" @click="changeActiveTab('Login')" :class="{selected: activeTab==='Login'}">Login</button>
+      <button class="tablinks" @click="changeActiveTab('Register')" :class="{selected: activeTab==='Register'}">Register</button>
+    </div>
+    <div v-if="!isLoggedIn && activeTab === 'Login'">
+      <login-form/>
+    </div>
+    <div v-if="!isLoggedIn && activeTab === 'Register'">
+      <register-form/>
+    </div>
+
+    <button v-if="isLoggedIn" @click="logout">
+      Logout
+    </button>
+</div>

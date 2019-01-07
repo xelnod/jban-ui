@@ -1,14 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import mutations from './mutations';
+import mutations, { AnonymousStub } from './mutations';
 import * as actions from './actions';
 
 Vue.use(Vuex);
 
 const state = {
-  currentUser: {
-    username: 'traveller',
-  },
+  currentUser: AnonymousStub,
   isLoggedIn: false,
 };
 

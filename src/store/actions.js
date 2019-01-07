@@ -6,6 +6,9 @@ import {
   LOGIN_FAILED,
   LOGOUT,
   SET_CURRENT_USER,
+  REGISTER,
+  REGISTER_SUCCESS,
+  REGISTER_FAILED,
 } from './mutations';
 
 
@@ -19,6 +22,20 @@ export const login = ({ dispatch, commit }, data) => new Promise((resolve, rejec
     })
     .catch((error) => {
       commit(LOGIN_FAILED);
+      reject(error);
+    });
+});
+
+export const register = ({ dispatch, commit }, data) => new Promise((resolve, reject) => {
+  commit(REGISTER);
+  Api.register(data)
+    .then((response) => {
+      commit(REGISTER_SUCCESS);
+      dispatch('refreshState');
+      resolve(response);
+    })
+    .catch((error) => {
+      commit(REGISTER_FAILED);
       reject(error);
     });
 });
@@ -40,10 +57,11 @@ export const refreshState = ({ dispatch }) => {
   dispatch('getCurrentUser');
 };
 
+
 export const getCurrentUser = ({ commit }) => {
   Api.getCurrentUser()
     .then((data) => {
       commit(SET_CURRENT_USER, data);
     })
-    .catch((error) => {console.log('uinfo err', error)});
+    .catch((error) => { console.error('uinfo err', error) });
 };
