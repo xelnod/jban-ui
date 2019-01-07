@@ -32,15 +32,14 @@ export class JbanFetch {
     // noinspection JSValidateTypes
     _url.search = new URLSearchParams(params);
     return new Promise((resolve, reject) => {
+      // noinspection JSCheckFunctionSignatures
       fetch(_url, {
         method: 'GET',
         credentials: 'include',
         headers: this.headers,
       }).then((response) => {
-        if (!response.ok) { throw response; }
-        return response.json();
-      }).then((json) => {
-        resolve(json);
+        if (!response.ok) { throw (response); }
+        resolve(response.json());
       }).catch((err) => {
         reject(err);
       });
@@ -61,7 +60,7 @@ export class JbanFetch {
         resolve(json);
       }).catch((err) => {
         err.text().then((errorMessage) => {
-          reject(errorMessage);
+          reject(JSON.parse(errorMessage));
         });
       });
     });

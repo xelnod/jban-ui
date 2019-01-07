@@ -8,5 +8,6 @@
       <option v-for="(option) in field.options" :value="option.value">{{ option.label }}</option>
     </select>
   </div>
+  <div class="error" v-for="err in nonFieldErrors">{{ err }}</div>
   <input type="submit" @click.prevent="onSubmit">
 </form>

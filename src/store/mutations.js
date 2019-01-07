@@ -28,7 +28,7 @@ export default {
     state.currentUser = AnonymousStub;
   },
   [SET_CURRENT_USER](state, payload) {
-    state.currentUser = payload;
+    state.currentUser = payload.anonymous ? AnonymousStub : payload;
     state.isLoggedIn = !payload.anonymous;
   },
   [REGISTER](state) {

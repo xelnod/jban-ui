@@ -59,9 +59,10 @@ export const refreshState = ({ dispatch }) => {
 
 
 export const getCurrentUser = ({ commit }) => {
+  // noinspection JSUnresolvedFunction
   Api.getCurrentUser()
     .then((data) => {
       commit(SET_CURRENT_USER, data);
-    });
-  // .catch((error) => { console.error('uinfo err', error) });
+    })
+    .catch(() => { commit(SET_CURRENT_USER, { anonymous: true }); });
 };

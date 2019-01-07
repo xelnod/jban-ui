@@ -14,17 +14,22 @@ export default {
   },
   data() {
     return {
-      nonFieldErrors: '',
+      nonFieldErrors: [],
     };
   },
   methods: {
     onSubmit() {
+      this.nonFieldErrors = [];
       const payload = {};
-      this.fields.forEach((item) => { payload[item.name] = item.value; });
+      this.fields.forEach((item) => {
+        item.error = '';
+        payload[item.name] = item.value;
+      });
+      // eslint-disable-next-line no-unused-expressions
       this.submit && this.submit(payload).catch((response) => {
         Object.keys(response).forEach((item) => {
           const fieldObj = this.fields.find(e => e.name === item);
-          fieldObj.error = response[item][0];
+          if (fieldObj) { fieldObj.error = response[item][0]; }
         });
         this.nonFieldErrors = response.non_field_errors;
       });

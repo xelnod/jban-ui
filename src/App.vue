@@ -9,7 +9,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import mainHeader from '@/components/header';
+import mainHeader from '@/components/_header';
 import '@/css/main.scss';
 
 export default {

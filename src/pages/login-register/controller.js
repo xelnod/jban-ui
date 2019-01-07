@@ -1,7 +1,7 @@
 import { mapState } from 'vuex';
 
-import LoginForm from './_loginForm';
-import RegisterForm from './_registerForm';
+import LoginForm from './_login-form';
+import RegisterForm from './_register-form';
 
 export default {
   name: 'LoginRegister',
