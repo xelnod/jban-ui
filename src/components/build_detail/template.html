@@ -1,9 +1,9 @@
 <div class="hello">
-  <h2>Привет, {{currentUser.username}}</h2>
-  <button @click="build.class = 'swordman'">Swordman</button>
-  <button @click="build.class = 'mage'">Mage</button>
-  <button @click="build.class = 'hunter'">Hunter</button>
-  <button @click="build.class = 'thief'">Thief</button>
+  Show for:
+  <button @click="build.class = 'swordman'" :class="{selected: build.class==='swordman'}">Swordman</button>
+  <button @click="build.class = 'mage'" :class="{selected: build.class==='mage'}">Mage</button>
+  <button @click="build.class = 'hunter'" :class="{selected: build.class==='hunter'}">Hunter</button>
+  <button @click="build.class = 'thief'" :class="{selected: build.class==='thief'}">Thief</button>
   <ul>
     <li v-for="charSkill in build.charSkills" :key="charSkill.id">
       {{ charSkills[charSkill][build.class].name }}

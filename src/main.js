@@ -5,7 +5,7 @@
 import Vue from 'vue';
 import App from './App';
 import store from '@/store/index';
-
+import '@/css/main.scss';
 
 Vue.config.productionTip = false;
 
@@ -18,3 +18,5 @@ new Vue({
   components: { App },
   template: '<App/>',
 });
+
+store.dispatch('refreshState');

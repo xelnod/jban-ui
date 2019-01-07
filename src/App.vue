@@ -10,6 +10,7 @@
 <script>
 import { mapState } from 'vuex';
 import mainHeader from '@/components/header';
+import '@/css/main.scss';
 
 export default {
   name: 'App',
@@ -19,9 +20,6 @@ export default {
     }),
   },
   components: { mainHeader },
-  mounted() {
-    this.$store.dispatch('refreshState');
-  },
 };
 </script>
 
