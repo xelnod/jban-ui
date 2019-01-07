@@ -62,6 +62,6 @@ export const getCurrentUser = ({ commit }) => {
   Api.getCurrentUser()
     .then((data) => {
       commit(SET_CURRENT_USER, data);
-    })
-    .catch((error) => { console.error('uinfo err', error) });
+    });
+  // .catch((error) => { console.error('uinfo err', error) });
 };
