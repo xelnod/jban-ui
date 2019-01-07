@@ -34,5 +34,41 @@
       "name": "Fury Concentration I",
       "icon_url": "t02.jpg"
     }
+  },
+  "3": {
+    "swordman": {
+      "name": "Double Attack I",
+      "icon_url": "s03.jpg"
+    },
+    "mage": {
+      "name": "Magical Double I",
+      "icon_url": "m03.jpg"
+    },
+    "hunter": {
+      "name": "Double Strafe I",
+      "icon_url": "h03.jpg"
+    },
+    "thief": {
+      "name": "Assassination I",
+      "icon_url": "t03.jpg"
+    }
+  },
+  "4": {
+    "swordman": {
+      "name": "Frost Blade I",
+      "icon_url": "s04.jpg"
+    },
+    "mage": {
+      "name": "Stone Curse I",
+      "icon_url": "m04.jpg"
+    },
+    "hunter": {
+      "name": "Frost Bolt I",
+      "icon_url": "h04.jpg"
+    },
+    "thief": {
+      "name": "Frost Assassination",
+      "icon_url": "t04.jpg"
+    }
   }
 }

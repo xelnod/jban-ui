@@ -30,3 +30,14 @@ export const login = data => new Promise((resolve, reject) => {
     });
   });
 });
+
+export const getBuild = buildId => new Promise((resolve, reject) => {
+  fetch(`http://localhost:8000/build/${buildId}`, {
+    method: 'GET',
+    credentials: 'include',
+  }).then(response => response.json()).then((response) => {
+    resolve(response);
+  }).catch((err) => {
+    reject(err);
+  });
+});

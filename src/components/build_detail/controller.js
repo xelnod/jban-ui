@@ -1,3 +1,5 @@
+import * as Api from '@/api';
+
 import charSkills from '@/static/char_skills.json';
 import runes from '@/static/runes.json';
 import petSkills from '@/static/pet_skills.json';
@@ -9,11 +11,12 @@ export default {
   data() {
     return {
       build: {
-        class: this.currentUser.class,
+        class: 'swordman',
         pet1Skills: [0, 0, 0, 0],
         pet2Skills: [0, 0, 0, 0],
-        pets: [1, 2],
+        pets: [0, 0],
         charSkills: [],
+        runes: [],
       },
       charSkills,
       runes,
@@ -31,13 +34,11 @@ export default {
   },
   methods: {
     getBuild(buildId) {
-      fetch(`http://localhost:8000/builds/${buildId}/`, {
-        method: 'GET',
-      }).then(response => response.json()).then((data) => {
+      Api.getBuild(buildId).then((data) => {
         this.build.charSkills = data.skills;
         this.build.runes = data.runes;
         this.build.class = data.default_class;
-      });
+      }).catch();
     },
   },
   props: {
