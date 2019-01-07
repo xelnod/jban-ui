@@ -9,6 +9,7 @@ const state = {
   currentUser: {
     username: 'traveller',
   },
+  isLoggedIn: false,
 };
 
 const store = new Vuex.Store({

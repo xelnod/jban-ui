@@ -1,15 +1,44 @@
+function getCookie(name) {
+  if (!document.cookie) {
+    console.log('no cookie');
+    return null;
+  }
+
+  const xsrfCookies = document.cookie.split(';')
+    .map(c => c.trim())
+    .filter(c => c.startsWith(name + '='));
+
+  if (xsrfCookies.length === 0) {
+    return null;
+  }
+
+  return decodeURIComponent(xsrfCookies[0].split('=')[1]);
+}
+
+
 export const getCurrentUser = () => new Promise((resolve, reject) => {
-  fetch('http://localhost:8000/self/', {
+  const csrfToken = getCookie('csrftoken');
+  fetch('http://localhost:8000/rest-auth/user/', {
     method: 'GET',
     credentials: 'include',
-  }).then(response => response.json()).then((response) => {
-    resolve(response);
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8',
+      'x-csrftoken': csrfToken,
+    },
+  }).then((response) => {
+    if (!response.ok) { throw response; }
+    return response.json();
+  }).then((json) => {
+    resolve(json);
   }).catch((err) => {
-    reject(err);
+    err.text().then((errorMessage) => {
+      resolve({anonymous: true, username: 'traveller', preferred_class: 'swordman'});
+    });
   });
 });
 
 export const login = data => new Promise((resolve, reject) => {
+  const csrfToken = getCookie('csrftoken');
   fetch('http://localhost:8000/rest-auth/login/', {
     method: 'POST',
     credentials: 'include',
@@ -18,6 +47,28 @@ export const login = data => new Promise((resolve, reject) => {
     ),
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
+      'x-csrftoken': csrfToken,
+    },
+  }).then((response) => {
+    if (!response.ok) { throw response; }
+    return response.json();
+  }).then((json) => {
+    resolve(json);
+  }).catch((err) => {
+    err.text().then((errorMessage) => {
+      reject(errorMessage);
+    });
+  });
+});
+
+export const logout = () => new Promise((resolve, reject) => {
+  const csrfToken = getCookie('csrftoken');
+  fetch('http://localhost:8000/rest-auth/logout/', {
+    method: 'POST',
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'x-www-form-urlencoded; charset=utf-8',
+      'x-csrftoken': csrfToken,
     },
   }).then((response) => {
     if (!response.ok) { throw response; }
@@ -32,6 +83,7 @@ export const login = data => new Promise((resolve, reject) => {
 });
 
 export const getBuild = buildId => new Promise((resolve, reject) => {
+  const csrfToken = getCookie('csrftoken');
   fetch(`http://localhost:8000/build/${buildId}`, {
     method: 'GET',
     credentials: 'include',

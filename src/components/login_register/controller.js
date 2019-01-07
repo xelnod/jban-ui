@@ -5,6 +5,7 @@ export default {
   computed: {
     ...mapState({
       currentUser: state => state.currentUser,
+      isLoggedIn: state => state.isLoggedIn,
     }),
   },
   data() {
@@ -26,6 +27,9 @@ export default {
         .catch((response) => {
           console.log('error in component', response);
         });
+    },
+    logout() {
+      this.$store.dispatch('logout');
     },
   },
 };
